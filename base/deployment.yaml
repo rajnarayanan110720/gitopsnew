@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: privaterepo.com:5000/twinarc-dev:latest
+          image: dt-twinarcpro-frontend
           command:
             - /bin/sh
             - -c
