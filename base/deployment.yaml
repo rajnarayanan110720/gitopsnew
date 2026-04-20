@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dt-twinarcpro-frontend
+  labels:
+    app: dt-twinarcpro-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dt-twinarcpro-frontend
+  template:
+    metadata:
+      labels:
+        app: dt-twinarcpro-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: privaterepo.com:5000/twinarc-dev:latest
+          command:
+            - /bin/sh
+            - -c
+            - pnpm turbo run dev
+          envFrom:
+            - configMapRef:
+                name: frontend-config
+          ports:
+            - containerPort: 30035
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 30035
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 30035
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            allowPrivilegeEscalation: true

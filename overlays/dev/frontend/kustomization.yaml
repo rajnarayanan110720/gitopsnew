@@ -1,0 +1,56 @@
+resources:
+  - ../../../base
+
+namespace: dev
+
+
+labels:
+  - pairs:
+      env: dev
+
+images:
+  - name: privaterepo.com:5000/twinarc-dev
+    newTag: dt-twinarcpro-frontend-dev-126
+
+replicas:
+  - name: dt-twinarcpro-frontend
+    count: 1
+
+configMapGenerator:
+  - name: frontend-config
+    behavior: merge
+    literals:
+      - DB_NAME=dev
+
+patches:
+  - target:
+      kind: Deployment
+      name: dt-twinarcpro-frontend
+    patch: |-
+      - op: add
+        path: /spec/template/spec/hostAliases
+        value:
+          - ip: "10.0.0.99"
+            hostnames:
+              - "dev.twinarcpro.eminds.ai"
+              - "api.dev.twinarcpro.eminds.ai"
+              - "gateway.dev.twinarcpro.eminds.ai"
+              - "cap.dev.twinarcpro.eminds.ai"
+      - op: add
+        path: /spec/template/spec/nodeSelector
+        value:
+          node-type: twinarcworker2
+
+  - target:
+      kind: Service
+      name: dt-twinarcpro-frontend
+    patch: |-
+      - op: replace
+        path: /spec/type
+        value: NodePort
+      - op: replace
+        path: /spec/ports/0/port
+        value: 30035
+      - op: add
+        path: /spec/ports/0/nodePort
+        value: 30035

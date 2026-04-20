@@ -1,0 +1,10 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+  - pdb.yaml
+
+configMapGenerator:
+  - name: frontend-config
+    literals:
+      - DOCKER_HOST=10.0.0.113
+      - DB_NAME=dev
