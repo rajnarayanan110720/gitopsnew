@@ -9,8 +9,9 @@ labels:
       env: dev
 
 images:
-  - name: privaterepo.com:5000/twinarc-dev
-    newTag: dt-twinarcpro-frontend-dev-126
+  - name: dt-twinarcpro-frontend-dev
+    newName: rajnarayananb/nginx-app
+    newTag: v15
 
 replicas:
   - name: dt-twinarcpro-frontend
