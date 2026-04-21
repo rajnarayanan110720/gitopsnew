@@ -9,7 +9,7 @@ labels:
       env: dev
 
 images:
-  - name: dt-twinarcpro-frontend-dev
+  - name: dt-twinarcpro-frontend
     newName: rajnarayananb/nginx-app
     newTag: v5
 
