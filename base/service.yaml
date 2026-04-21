@@ -8,4 +8,5 @@ spec:
     app: dt-twinarcpro-frontend
   ports:
     - port: 80
-      targetPort: 30035
+      targetPort: 80
+      nodePort: 30035
