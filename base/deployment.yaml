@@ -21,7 +21,7 @@ spec:
             - configMapRef:
                 name: frontend-config
           ports:
-            - containerPort: 30035
+            - containerPort: 80
           resources:
             requests:
               cpu: "100m"
