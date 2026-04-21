@@ -42,6 +42,7 @@ patches:
         value:
           node-type: twinarcworker2
 
+patches:
   - target:
       kind: Service
       name: dt-twinarcpro-frontend
@@ -51,7 +52,10 @@ patches:
         value: NodePort
       - op: replace
         path: /spec/ports/0/port
-        value: 30035
-      - op: add
+        value: 80
+      - op: replace
+        path: /spec/ports/0/targetPort
+        value: 80
+      - op: replace
         path: /spec/ports/0/nodePort
         value: 30035
