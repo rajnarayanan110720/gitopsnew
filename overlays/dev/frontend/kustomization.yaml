@@ -7,7 +7,6 @@ namespace: dev
 labels:
   - pairs:
       env: dev
-
 images:
   - name: dt-twinarcpro-frontend
     newName: rajnarayananb/nginx-new
