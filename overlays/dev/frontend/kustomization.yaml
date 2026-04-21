@@ -10,7 +10,7 @@ labels:
 images:
   - name: dt-twinarcpro-frontend
     newName: rajnarayananb/nginx-new
-    newTag: v12
+    newTag: v14
 
 replicas:
   - name: dt-twinarcpro-frontend
