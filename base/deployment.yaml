@@ -17,10 +17,6 @@ spec:
       containers:
         - name: frontend
           image: dt-twinarcpro-frontend
-          command:
-            - /bin/sh
-            - -c
-            - pnpm turbo run dev
           envFrom:
             - configMapRef:
                 name: frontend-config
