@@ -10,7 +10,7 @@ labels:
 images:
   - name: dt-twinarcpro-frontend
     newName: rajnarayananb/nginx-new
-    newTag: 0224d91742f56d4a9fa23d01354f4656d2fb3cc5-24
+    newTag: 9fae54a86754a8be75dd56a6da4d17bfd446cb1d-25
 
 replicas:
   - name: dt-twinarcpro-frontend
